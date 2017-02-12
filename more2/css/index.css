@@ -1,0 +1,315 @@
+/* header start */
+.header{
+	margin: 0 auto;
+	height: 126px;
+	width: 1600px;
+	background: #30394d;
+	border-bottom: 4px solid #242b3a;
+}
+.header .header-logo {
+	float: left;
+}
+.header .header-logo .logo{
+	margin-top: 16px;
+	width: 101px;
+	height: 96px;
+	background: url("../images/logo.png");
+}
+
+.header .header-nav {
+	margin: 48px 0 0 120px;
+	float: left;
+}
+.header .header-nav>li {
+	margin-right: 80px;
+	float: left;
+}
+.header .header-nav .header-nav-item {
+	height: 32px;
+	width: 130px;
+	line-height: 32px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+}
+.header .header-nav .active {
+	background: #ff3d4e;
+	color: #f4b1af;
+}
+.header .header-nav .header-nav-item:hover {
+	background: #ff3d4e;
+	color: #f4b1af;
+} 
+/* header end */
+
+/* silder start */
+.silder{
+	height: 996px;
+	background: #30394d;
+	border-bottom: 4px solid #bfbfbf;
+}
+/* silder end */
+.silder .silder-panel {
+	position: relative;
+	height: 996px;
+	overflow: hidden;
+}
+.silder .btn-group1 .triangle-btn {
+	position: absolute;
+	top: 50%;
+	margin-top: -21px;
+	width: 23px;
+	height: 42px;
+	
+}
+.silder .btn-group1 .left-btn {
+	left: 0;
+	background: url("../images/left arrow.png");
+}
+.silder .btn-group1 .right-btn {
+	right: 0;
+	background: url("../images/right arrow.png");
+}
+.silder .btn-group2 {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -54px;
+	margin-bottom: 50px;
+}
+.silder .btn-group2 .radius-btn {
+	float: left;
+}
+.silder .btn-group2 .item {
+	margin-right: 16px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 50%;
+}
+.silder .btn-group2 .active {
+	background: #ff3d4e;
+}
+
+.silder .silder-text {
+	float: left;
+	margin-top: 160px;
+	margin-left: 90px;
+
+
+}
+.silder .silder-text .silder-title .title-l {
+	font-size: 97px;
+	font-weight: 500;
+}
+.silder .silder-text .silder-title .title-m {
+	font-size: 48px;
+	font-weight: 500;
+}
+.silder .silder-text .silder-title .title-s {
+	font-size: 26px;
+	font-weight: 100;
+}
+.silder .silder-text>p{
+	margin-top: 60px;
+	line-height: 1.3em;
+	font-size: 26px;
+	font-weight: lighter;
+}
+.silder .silder-text .strong{
+	font-size: 27px;
+	font-weight: 900;
+}
+.silder .silder-img {
+	float: right;
+	margin-top: 160px;
+	margin-right: 90px;
+	width: 451px;
+	height: 672px;
+}
+
+.about .about-header {
+	padding: 110px 0 80px 0;
+	background: #fff;
+	text-align: center;
+	line-height: 46px;
+}
+.about .about-header .about-title {
+	margin-bottom: 30px;
+	font-size: 36px;
+	font-weight: 900;
+	color: #66635e;
+}
+.about .about-header .about-text {
+	font-size: 36px;
+	font-weight: 100;
+	color: #66635e;
+}
+.about  .about-panle {
+	height: 200px;
+	line-height: 200px;
+}
+.about  .about-panle .about-panle-title {
+	float: left;
+	font-size: 60px;
+}
+.about  .about-panle .about-panle-text {
+	float: right;
+	font-size: 30px;
+}
+.about  .blue {
+	background: #0288d1;
+}
+.about  .green {
+	background: #00e676;
+}
+.about  .yellow {
+	background: #ffbc00;
+}
+.work {
+	padding-top: 120px;
+	height: 876px;
+	background: #fff;
+	border-top: 4px solid #bfbfbf;
+}
+.work .work-title {
+	text-align: center;
+	font-size: 36px;
+	font-weight: 900px;
+	color: #66635e;
+	margin: 0 0 90px 0;
+}
+.work .work-body {
+	width: 1210px;
+}
+.work .work-body .work-body-item {
+	float: left;
+}
+.work .work-body .work-body-img {
+	margin-right: 30px;
+	margin-bottom: 60px;
+	width: 373px;
+	height: 160px;
+}
+
+.work .work-footer {
+	font-size: 24px;
+	text-align: center;
+	color: #66635e;
+}
+.work .work-footer .color-blue {
+	font-size: 24px;
+	font-weight: 900;
+	color: #0288d1;
+}
+
+.clients {
+	padding-top: 126px;
+	background: #ff3d4e;
+}
+.clients .clients-title {
+	font-size: 36px;
+	font-weight: 900px;
+	color: #fff;
+	text-align: center;
+}
+.clients .clients-box {
+	margin: 0 auto;
+	width: 980px;
+	overflow: hidden;
+}
+.clients .clients-list {
+	width: 1280px;
+	margin: 0 auto;
+	margin-top: 130px;
+	height: 500px;
+}
+.clients .clients-list .clients-item {
+	float: left;
+}
+.clients .clients-list .clients-icon {
+	margin-bottom: 140px;
+	width: 146px;
+	height: 96px;
+	line-height: 96px;
+	margin-right: 280px;
+	text-align: center;
+}
+.clients .clients-list .clients-icon img{
+	vertical-align: middle;
+}
+
+.contact{
+	background: #0288d1;
+}
+.contact .contact-box {
+	padding-top: 120px;
+	height: 880px;
+	width: 700px;
+	margin: 0 auto;
+}
+.contact .contact-title{
+	font-size: 36px;
+	font-weight: 900;
+	text-align: center;
+	color: #fff;
+}
+
+.contact .your-info {
+	margin: 50px 0 40px 0;
+}
+.contact .your-info label{
+	font-size: 30px;
+	color: #fff;
+}
+.contact .your-info .name{
+	display: block;
+	width: 680px;
+	height: 38px;
+	margin-top: 5px;
+	padding: 0 10px;
+	background: #fff;
+}
+.contact .your-info .describe {
+	padding: 4px;
+	margin-top: 5px;
+	width: 692px;
+	height: 200px;
+	background: #fff;
+	resize: none;
+}
+.contact .your-info .submit {
+	float: right;
+	height: 50px;
+	width: 220px;
+	font-size: 36px;
+	font-weight: 900;
+	background: #ff3d4e;
+	cursor: pointer;
+}
+.contact-iconS {
+	width: 710px;
+	margin-left: 10px;
+}
+.contact-iconS li{
+	float: left;
+}
+.contact-iconS .icon-item {
+	margin-top: 20px;
+	margin-right: 20px;
+	width: 80px;
+	height: 80px;
+}
+
+
+
+
+
+
+
+.silder,.about,.work,.clients,.contact{
+	margin: 0 auto;
+	width: 1600px;
+}
+
+
