@@ -1,0 +1,484 @@
+*{margin: 0;padding: 0;}
+body{
+	font-size: 12px;
+	color: #959595;
+	font-family: "微软雅黑";
+	background: #f7f7f7;
+}
+a{text-decoration: none;color: #666;}
+ul,li{list-style: none;}
+img{border: none;}
+.text-green{
+	color: green;
+}
+.text-public{
+	color: #6ccdee;
+}
+.text-red{
+	color: red;
+}
+.text-default{
+	color: #959595;
+}
+.box{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.row{
+	width: 100%;
+
+}
+.clear{
+	clear: both;
+}
+.super{
+	display: block;
+	position: absolute;
+	top: -11px;
+	left: -5px;
+	z-index: 4;
+	width: 66px;
+	height: 73px;
+	background: url("../images/sd-ico.png") no-repeat;
+}
+.vip{
+	display: block;
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	z-index: 4;
+	width: 64px;
+	height: 64px;
+	background: url("../images/vip-ico.png") no-repeat;
+}
+/*头部 开始*/
+.header{
+	width: 100%;
+	height: 112px;
+	background: #eee;
+	padding-top: 1px;
+}
+.header .header-logo{
+	display: block;
+	margin-top: 31px;
+	width: 200px;
+	height: 50px;
+	background: url("../images/20160623152532_108.png") no-repeat;
+	float: left;
+}
+.search{
+	float: left;
+	margin-top: 31px;
+	margin-left: 70px;
+}
+.header .search-top{}
+.header .search-top .search-input{
+	padding: 0 4px;
+	width: 462px;
+	height: 40px;
+	border: 1px solid #ccc;
+}
+.header .search-top .search-btn{
+	position: relative;
+	left: -4px;
+	border: none;
+	height: 40px;
+	width: 108px;
+	text-align: center;
+	background: #2f4151;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+.header .search-top .search-btn:hover{
+	background: #6ccdee;
+}
+.header .search .search-hotkey{
+	margin: 10px 0;
+	font-size: 14px;
+}
+/*头部 结束*/
+
+/*导航 开始*/
+.nav{
+	width: 100%;
+	height: 48px;
+	background: #2f4151;
+}
+.nav .box{
+	overflow: visible;
+}
+.nav .nav-left{
+	height: 48px;
+	float: left;
+}
+.nav .nav-left li{
+	padding: 0 30px;
+	float: left;
+	height: 48px;
+	cursor: pointer;
+	position: relative;
+	top: -6px;
+	padding-top: 6px;
+}
+.nav .nav-left li a{
+	display: block;
+	height: 48px;
+	line-height: 48px;
+	font-size: 16px;
+	color: white;
+}
+.nav .nav-left li.active{
+	background: #6ccdee;
+	transition: all 0.51s;
+}
+.nav .nav-right{
+	float: right;
+	height: 48px;
+	line-height: 48px;
+}
+.nav .nav-right li{
+	float: left;
+}
+.nav .nav-right li a{
+	color: #959595;
+	font-size: 14px;
+	padding: 0 10px;
+}
+.nav .nav-right li a:hover{
+	color: #6ccdee;
+}
+.nav .nav-right li a.girl-show{
+	color: red;
+}
+.sub-nav{
+	width: 100%;
+	height: 40px;
+	background: #efefef;
+}
+.sub-nav .sub-nav-list{
+	float: left;
+}
+.sub-nav a{
+	height: 40px;
+	line-height: 40px;
+	color: #959595;
+	padding: 0 20px;
+}
+.sub-nav a.film-first{
+	color: #6ccdee;
+}
+.sub-nav a:hover{
+	color: #6ccdee;
+}
+/*导航 结束*/
+
+/*焦点图 开始*/
+.banner{
+	position: relative;
+	height: 410px;
+}
+.banner .banner-list{}
+.banner .banner-list .banner-item{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 410px;
+	overflow: hidden;
+}
+.banner .banner-list li.active{
+	display: block;
+}
+.banner .banner-btns-box{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	margin-left: -488px;
+	width: 976px;
+}
+.banner .banner-btns-box .film-desc-list li{
+	display: none;
+}
+.banner .banner-btns-box .film-desc-list li.active{
+	display: block;
+}
+.banner .banner-btns-box .film-desc-list .film-desc{
+	font-size: 20px;
+	margin: 6px 0;
+	color: white;
+}
+.banner .banner-btns-box .film-desc-list li.active{
+	display: black;
+}
+.banner .banner-btns-box .banner-btns li{
+	float: left;
+	width: 112px;
+	height: 64px;
+	padding: 2px;
+	margin: 0 3px;
+}
+.banner .banner-btns-box .banner-btns li.active{
+	padding: 0;
+	border: 2px solid #6ccdee;
+}
+/*焦点图 结束*/
+
+/*分类导航  开始*/
+.filter-area{
+	width: 100%;
+	height: 100px;
+	background: white;
+	margin-top: 20px;
+}
+.filter-area dl{
+	padding: 0 0 10px 10px;
+	margin-right: 20px;
+	width: 250px;
+	height: 100px;
+	float: left;
+}
+.filter-area dl dt{
+	padding: 10px 0;
+	font-size: 16px;
+	color: #222;
+}
+.filter-area dl dd a{	
+	display: block;
+	float: left;
+	padding: 2px 7px;
+}
+.filter-area dl dd a:hover{
+	background: #6ccdee;
+	color: #fff;
+}
+.filter-area dl.last-dl{
+	width: 310px;
+	margin-right: 0px;
+}
+/*分来导航 结束*/
+
+/*推荐 开始*/
+
+/*右边 部分*/
+.wd{
+	margin-top: 20px;
+}
+.recommend-left{
+	width: 860px;
+	float: left;
+	margin-top: 10px;
+}
+.recommend-left .recommend-title{
+	position: relative;
+	height: 30px;
+	overflow: auto;
+	margin: 20px 0;
+}
+.recommend-left .recommend-title h2{
+	padding-right: 20px;
+	color: black;
+	font-size: 26px;
+	font-weight: 100;
+	background: #f7f7f7;
+	float: left;
+}
+.recommend-left .recommend-title h2:hover{
+	color: #6ccdee;
+}
+.recommend-left .recommend-title .more{
+	padding: 0 10px;
+	margin-top: 8px;
+	height: 20px;
+	line-height: 20px;
+	color: white;
+	background: #6ccdee;
+	float: right;
+	border-radius: 10px;
+}
+.recommend-left .recommend-title .more:hover{
+	background: #555;
+	color: #6ccdee;
+}
+.recommend-left .recommend-title .line{
+	position: relative;
+	right: 0px;
+	top: 50%;
+	margin-top: 2px;
+	width: 100%;
+	height: 1px;
+	background: #6ccdee;
+	z-index: -1;
+}
+.recommend-item{
+	margin-right: 20px;
+	margin-bottom: 30px;
+	width: 200px;
+	float: left;
+}
+.last-item{
+ 	margin-right: 0;
+ 	background: white;
+ }
+.recommend-item .recommend-top{
+	position: relative;
+}
+.recommend-item .recommend-top .recommend-cover{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 1;
+}
+.recommend-item .recommend-top:hover .recommend-cover{
+	display: block;
+}
+.recommend-item .recommend-top .recommend-cover .recommend-are{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 40px;
+	height: 40px;
+	border: 2px solid white;
+	border-radius: 50%;
+	margin-left: -22px;
+	margin-top: -22px;
+}
+.recommend-item .recommend-top .recommend-cover .recommend-are .recommend-triangle{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -6px;
+	margin-top: -11px;
+	border: 12px solid white;
+	border-left-width: 16px; 
+	border-bottom-color: transparent; 
+	border-right-color: transparent;
+	border-top-color: transparent;
+	font-size: 0;
+
+}
+.recommend-item .recommend-top .recommend-time{
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding: 6px 0 2px 10px;
+	width: 190px;
+	z-index: 3;
+	color: white;
+	background: rgba(0,0,0,0.75);
+}
+.recommend-item .recommend-bottom{
+	padding-left: 10px;
+	padding-top: 8px;
+	overflow: auto;
+	line-height: 20px;
+}
+.recommend-item .recommend-bottom .recommend-film-name{
+	font-size: 16px;
+	color: black;
+}
+.recommend-item .recommend-bottom .recommend-film-name:hover{
+	color: #6ccdee;
+}
+
+/*左边部分*/
+.recommend-right{
+	margin-left: 20px;
+	margin-top: 20px;
+	padding: 10px;
+	width: 300px;
+	background: white;
+	float: left;
+}
+.recommend-right .recommend-title{
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+}
+.recommend-right .recommend-title h3{
+	position: relative;
+	padding-right: 20px;
+	background: white;
+	float: left;
+	font-size: 20px;
+	font-weight: 500;
+	color: black;
+	z-index: 2;
+}
+.recommend-right .recommend-title .line{
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	width: 100%;
+	height: 1px;
+	background: #6ccdee;
+	z-index: 1;
+}
+.recommend-right .recommend-right-ranking{
+	font-size: 14px;
+	margin-top: 16px;
+}
+.recommend-right .recommend-right-ranking li{
+	overflow: hidden;
+	margin-bottom: 16px;
+}
+.recommend-right .recommend-right-ranking .ranking-num{
+	margin: 0 10px;
+	float: left;	
+}
+.recommend-right .recommend-right-ranking .ranking-film-name{
+	float: left;
+}
+.recommend-right .recommend-right-ranking .ranking-super-name{
+	float: right;
+}
+.recommend-right .recommend-right-ranking .ranking-rect{
+	border: 2px solid black;
+	margin: 8px 10px;
+	float: left;
+}
+.recommend-right .recommend-right-ranking .ranking-fraction{
+	float: right;
+}
+.recommend-right .recommend-right-ranking .ranking-fraction .ranking-fraction-num{
+	color: #ff5400;
+}
+/*推荐 结束*/
+
+/*付费 预告  开始*/
+.pay-tv {
+}
+.pay-tv .pay-tv-tilte{
+	position: relative;
+	height: 35px;
+	border-top: 1px solid #6ccdee;
+	margin-top: 24px;
+}
+.pay-tv .pay-tv-tilte .title{
+	position: absolute;
+	left: 0;
+	top: -20px;
+	padding-right: 20px;
+	background: #f7f7f7;
+	font-size: 30px;
+	color: #333;
+}
+.pay-tv .pay-tv-tilte .more{
+	position: absolute;
+	right: 0;
+	top: -10px;
+	color: white;
+	background: #6ccdee;
+	border-radius: 10px;
+	padding: 2px 6px;
+}
+.pay-tv .pay-tv-imgs .pay-tv-list{
+	width: 10000px;
+}
+/*付费 预告  结束*/
