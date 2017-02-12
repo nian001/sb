@@ -1,0 +1,351 @@
+body{
+	background: #fff;
+}
+.header{
+	position: relative;
+	margin: 0 auto;
+	height: 683px;
+	width: 1500px;
+}
+.header .header-top{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100px;
+}
+.header .header-top .header-logo{
+	float: left;
+	margin-top: 40px;
+} 
+.header .header-top .header-logo .logo{
+	width: 48px;
+	height: 20px;
+	background: url("../images/logo_black.png") no-repeat;
+}
+.header .header-top .header-menu-btn{
+	float: right;
+	margin-top: 40px;
+} 
+.header .header-top .header-menu-btn .btn{
+	width: 26px;
+	height: 16px;
+	background: url("../images/hear_menu_btn.png") no-repeat;
+} 
+.header .header-top .header-menu{
+	position: absolute;
+	top: -100px;
+	left: 0;
+	width: 100%;
+	height: 100px;
+	background: #535353;
+}
+.header .header-top .header-menu .header-menu-logo{
+	margin-top: 40px;
+	float: left;
+	width: 48px;
+	height: 20px;
+	background: url("../images/logo_white.png") no-repeat;
+}
+.header .header-top .header-menu .header-nav{
+	margin-top: 45px;
+	float: right;
+}
+.header .header-top .header-menu .header-nav .item{
+	float: left;
+}
+.header .header-top .header-menu .header-nav  .item a{
+	margin-right: 40px;
+	font-size: 16px;
+	color: #fff;
+}
+.header .header-top .header-menu .header-menu-close-btn{
+	float: right;
+	margin-top: 44px;
+	width: 21px;
+	height: 20px;
+	background: url("../images/header_menu_close_btn.png") no-repeat;
+}
+.header .header-banner-Caption{
+	position: absolute;
+	left: 50%;
+	bottom: 300px;
+	margin-left: -281px;
+	width: 562px;
+	height: 85px;
+	background: url("../images/banner_Caption.gif") no-repeat;
+}
+
+.services{
+	margin-top: 140px;
+}
+.services .container {
+	overflow: hidden;
+}
+.services .services-group {
+	width: 1180px;
+}
+.services .services-item{
+	float: left;
+	margin-right: 80px;
+	width: 310px;
+	height: 288px;
+}
+.services .services-item .services-icon{
+	float: left;
+	width: 48px;
+	height: 41px;
+}
+.services .services-item .services-panle{
+	float: right;
+	width: 234px;
+}
+.services .services-item .services-panle-title{
+	font-size: 18px;
+
+}
+.services .services-item .services-panle-body{
+	margin-top: 30px;
+	line-height: 2em;
+	word-break: break-all;
+}
+
+.about .about-header{
+	width: 100%;
+	text-align: center;
+}
+.about .about-header .about-header-logo{
+	margin: 0 auto;
+	width: 48px;
+	height: 22px;
+	background: url("../images/logo_black.png") no-repeat;
+}
+.about .about-header .about-header-text{
+	margin: 50px 0 50px 0;
+	line-height: 2em;
+}
+.about .about-body{
+}
+.about .about-body .about-body-left{
+	float: left;
+	margin: 180px 30px 0 45px;
+	width: 470px;
+}
+.about .about-body  .left-item{
+	margin: 50px 0 130px 0;
+}
+.about .about-body  .left-title{
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.about .about-body  .left-text{
+	line-height: 2em;
+}
+.about .about-body .about-body-right{
+	float: right;
+	margin: 50px 30px 0 45px;
+	width: 470px;
+}
+
+.portfolio {
+	margin-top: 140px;
+}
+
+
+.public-header {
+	text-align: center;
+}
+.public-header .por {
+	font-size: 24px;
+	font-weight: 900;
+}
+.public-header .split {
+	margin: 0 7px;
+}
+
+.portfolio .portfolio-banner {
+	margin-top: 100px;
+	overflow: hidden;
+}
+.portfolio .portfolio-banner .portfolio-banner-list {
+	position: relative;
+	left: 0;
+	width: 10000px;
+}
+.portfolio .portfolio-banner .item {
+	float: left;
+	margin-right: 80px;
+	width: 313px;
+	height: 311px;
+}
+.portfolio .portfolio-footer {
+	margin-top: 80px;
+}
+.portfolio .portfolio-footer .portfolio-btns{
+	width: 80px;
+	margin: 0 auto;
+}
+.portfolio .portfolio-footer .portfolio-btns li{
+	float: left;
+}
+.portfolio .portfolio-footer .portfolio-btns .portfolio-btn {
+	margin-right: 10px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #e5e5e5;
+}
+.portfolio .portfolio-footer .portfolio-btns .active {
+	background: #1a8bb3;
+}
+
+.testimonials {
+	margin-top: 280px;
+}
+
+.testimonials .testimonials-list {
+	margin-top: 86px;
+	width: 1170px;
+}
+.testimonials .testimonials-panle {
+	margin-right: 80px;
+	float: left;
+	width: 310px;
+}
+.testimonials .panle-header span{
+	display: block;
+}
+
+.testimonials .panle-header .testimonials-icon{
+	margin: 0 auto;
+	height: 48px;
+	width: 48px;
+	border: 2px solid #e3e3e3;
+	border-radius: 50%;
+	background: url("../images/yh.gif") no-repeat;
+	background-position: 15px 17px; 
+}
+.testimonials .panle-header .testimonials-title {
+	margin-top: 22px;
+	margin-bottom: 40px;
+	font-size: 16px;
+	text-align: center;
+}
+
+.testimonials .testimonials-body{
+	position: relative;
+	padding: 40px 20px;
+	border-top: 1px solid #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+}
+.testimonials .testimonials-body .icon {
+	display: block;
+	position: absolute;
+	top: -6px;
+	left: 152px;
+	width: 10px;
+	height: 10px;
+	border: 1px solid #e3e3e3;
+	border-bottom: none;
+	border-right: none;
+	background: #fff;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.testimonials .testimonials-text {
+	line-height: 2em;
+	text-align: center;
+	word-break: break-all;
+}
+.contact {
+	margin-top: 280px;
+}
+.contact .contact-box {
+	margin: 0 auto;
+	width: 474px;
+}
+.contact .contact-box span{
+	display: block;
+	text-align: center;
+	margin: 40px 0;
+}
+.contact .contact-box .email-icon {
+	margin: 0 auto;
+	width: 48px;
+	height: 57px;
+	background: url("../images/email-icon.gif") no-repeat;
+}
+.contact .contact-box .ask {
+	font-size: 26px;
+	font-weight: 700;
+	color: #535353;
+}
+.contact .contact-box .line {
+	margin: 60px auto;
+	width: 100px;
+	border-top: 1px solid #000;
+}
+.contact .contact-box .email-adress {
+	font-size: 40px;
+	color: #4caed0;
+}
+.contact .contact-box .phone {
+	font-size: 40px;
+	color: #4caed0;
+}
+
+.footer{
+	margin: 0 auto;
+	width: 1500px;
+	height: 140px;
+	background: #3e3d3d;
+
+}
+.footer .footer-left{
+	float: left;
+	margin-top: 70px;
+	color: #bfbfbf;
+}
+.footer .footer-left span{
+	color: #bfbfbf;
+}
+.footer .footer-left .footer-logo{
+	display: inline-block;
+	width: 48px;
+	height: 20px;
+	background: url("../images/logo_black.png") no-repeat;
+}
+.footer .footer-right{
+	margin-top: 70px;
+	float: right;
+}
+.footer .footer-right li{
+	float: left;
+}
+.footer .footer-right .item{
+	margin-right: 32px;
+	color: #bfbfbf;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
