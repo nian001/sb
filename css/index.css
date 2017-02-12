@@ -1,0 +1,379 @@
+*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-size: 14px;
+			background: #f8f8f8;
+		}
+		ul,li{
+			list-style: none;
+		}
+		header{
+			width: 100%;
+			height: 44px;
+			background: #322f3b;
+		}
+		.center-box{
+			margin: 0 auto;
+			width: 1200px;
+			height: 44px;
+			line-height: 40px;
+		}
+		.center-box .header-left{
+			float: left;
+		}
+		.center-box .header-right{
+			float: right;
+		}
+		.left-item{
+			position: relative;
+			padding: 0 20px;
+			float: left;
+			color: #dedede;
+			cursor: pointer;
+		}
+		.left-item:hover{
+			background: #27252e;
+		}
+		.left-dropdown-menu{
+			position: absolute;
+			left: 0;
+			top: 40px;
+			padding: 15px 0;
+			width: 160px;
+			background: #27252e;
+			visibility: hidden;
+			z-index: 9;
+			
+		}
+		.left-dropdown-menu li{
+			line-height: 14px;
+			padding: 10px 20px;
+		}
+		.left-item:hover .left-dropdown-menu{
+			visibility: visible;
+		}
+		.header-right .right-item{
+			float: left;
+			height: 44px;
+			line-height: 44px;
+			color: #dedede;
+			padding: 0 20px;
+		}
+		.header-right .right-item a{
+			text-decoration: none;
+			color: #dedede;
+		}
+		.header-right .right-item .shu{
+			margin: 0 6px;
+			color: gray;
+		}
+		.header-right .right-item:hover{
+			background: white;
+		}
+		.header-right .right-item:hover a{
+			color: black;
+
+		}
+		nav{
+			width: 100%;
+			height: 88px;
+			line-height: 88px;
+		}
+		.nav{
+			position: relative;
+			width: 1200px;
+			height: 88px;
+			margin: 0 auto;
+		}
+		.logo-wrapper{
+			margin-top: 16px;
+			float: left;
+			cursor: pointer;
+		}
+		.logo{
+			height: 45px;
+		}
+		.nav-list{
+			float: left;
+		}
+		.nav-list li{
+			margin: 0 8px;
+			padding: 0 15px;
+			float: left;
+			color: #555;
+			cursor: pointer;
+		}
+		.nav-list li:hover{
+			color: pink;
+		}
+		.nav-search{
+			margin-top: 20px;
+			float: right;
+		}
+		.search-input{
+			float: left;
+			height: 40px;
+			line-height: 40px;
+		}
+		.search-input input{
+			padding: 0 6px;
+			height: 36px;
+			border: 1px solid #ccc;
+		}
+		.search-btn{
+			position: relative;
+			top: 1px;
+			border: 1px solid #ccc;
+			height: 38px;
+			font-size: 16px;
+			padding: 0 10px;
+			float: left;
+			cursor: pointer;
+		}
+		.banner{
+			width: 100%;
+		}
+		.banner-box{
+			position: relative;
+			margin: 0 auto;
+			width: 1200px;
+			height: 480px;
+			background: red;
+		}
+		.banner-imgs{
+			position: absolute;
+		}
+		.banner-btns{
+			position: absolute;
+			bottom: 16px;
+			right: 44px;
+			z-index: 10;
+		}
+		.banner-btns li{
+			margin-left: 10px;
+			float: left;
+			height: 16px;
+			width: 16px;
+			border-radius: 50%;
+			border: 1px solid gray;
+			cursor: pointer;
+		}
+		.banner-btns li.active{
+			background: white;
+		}
+		.banner-nav{
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-size: 12px;
+			width: 200px;
+			height: 480px;
+			background: rgba(0,0,0,0.5);
+		}
+		.banner-nav .nav-group>li{
+			padding: 15px;
+		}
+		.banner-nav>li:hover{
+			background: #f53a8a;
+		}
+		.banner-nav .nav-group li .text a{
+			display: inline-block;
+			margin-top: 10px;
+			margin-right: 16px;
+
+			color: #dedede;
+			text-decoration: none;
+		}
+		.banner-nav .nav-group>li:hover .text a{
+			color: white;
+		}
+
+		.banner-nav .nav-group li .text a:hover{
+			text-decoration: underline;
+		}
+		.banner-nav .nav-group h3{
+			color: white;
+			cursor: pointer;
+		}
+
+		.nav-menu{
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 200px;
+			width: 240px;
+			height: 480px;
+			background: white;
+		}
+		.nav-group li:hover .nav-menu{
+			display: block;
+		}
+		.nav-menu li{
+			padding: 10px 20px;
+			width: auto;
+			height: 75px;
+		}
+		.nav-menu li a{
+			float: left;
+		}
+		.nav-menu li span{
+			display: inline-block;
+			margin-left: 10px;
+			float: left;
+			height: 75px;
+			line-height: 75px;
+		}
+		.mt-box{
+			margin: 0 auto;
+			width: 1200px;
+		}
+		.H-promo{
+			margin-top: 20px; 
+			width: 100%;
+			height: 210px;
+		}
+		.H-promo li{
+			margin-right: 15px; 
+			width: 390px;
+			height: 210px;
+			float: left;
+		}
+		.H-promo li.last{
+			margin-right: 0;
+		}
+		.h-box{
+			margin: 0 auto;
+			margin-top: 20px;
+			width: 1200px;
+		}
+		.h-box .h-box-title{
+			height: 68px;
+			line-height: 68px;
+		}
+		.h-box .h-box-title .title{
+			float: left;
+		}
+		.h-box .h-box-title .more{
+			float: right;
+		}
+		.h-box .row{
+			overflow: hidden;
+		}
+		.h-box .row .first{
+			width: 300px;
+			height: 300px;
+			float: left;
+		}
+		.h-box .row .other{
+			float: left;
+		}
+		.h-box .row .other li{
+			width: 225px;
+			height: 300px;
+			float: left;
+			text-align: center;
+			background: white;
+			box-shadow: 0 0 1px #ccc;
+		}
+		.h-box .row .other li a{
+			text-decoration: none;
+		}
+		.h-box .row .other li a span{
+			display: block;
+		}
+		.h-box .row .other li a img{
+			transform: scale(0.8);
+			transition: all 1s;
+		}
+		
+		.h-box .row .other .name{
+			color: black;
+			transition: all 1s;
+		}
+		.h-box .row .other .desc{
+			color: #999;
+			transition: all 1s;
+		}
+		.h-box .row .other .price{
+			color: #ff3161;
+			transition: all 1s;
+		}
+		.h-box .row .other li:hover a img{
+			transform: scale(0.9);
+		}
+		.h-box .row .other li:hover a .name{
+			opacity: 0;
+		}
+		.h-box .row .other li:hover a .desc{
+			opacity: 0;
+		}
+		.h-box .row .other li:hover a .price{
+			margin-top: -10px;
+			transform: scale(1.3);
+		}
+
+		.h-box{
+			position: relative;
+		}
+		.h-box .card-box{
+			position: relative;
+			width: 1120px;
+			height: 320px;
+			margin: 0 40px;
+			overflow: hidden;
+		}
+		.h-box .left,.right{
+			position: absolute;
+			top: 217px;
+			display: block;
+			width: 30px;
+			height: 30px;
+			border: 2px solid gray;
+			border-right: none;
+			border-bottom: none;
+		}
+		.h-box .left{
+			left: 10px;
+			transform: rotate(-45deg);
+		}
+		.h-box .right{
+			right: 10px;
+			transform: rotate(135deg);
+		}
+		.h-box .h-box-end .card-list{
+			position: relative;
+			width: 10000px;
+		}
+		.h-box .h-box-end .card-item{
+			width: 210px;
+			height: 300px;
+			margin-right: 15px;
+			text-align: center;
+			overflow: hidden;
+			background: white;
+			float: left;
+			transition: all 1s;
+		}
+		.h-box .h-box-end .card-item a{
+			color: gray;
+			text-decoration: none;
+		}
+		.h-box .h-box-end .card-img{
+			margin: 62px auto 32px;
+			display: block;
+		}
+		.h-box .h-box-end .card-name,.card-desc{
+			display: block;
+		}
+		.h-box .h-box-end .card-name{
+			font-size: 16px;
+			color: black;
+		}
+		.h-box .h-box-end .card-desc{
+			color: gray;
+		}
+		.h-box .h-box-end .card-item:hover{
+			transform: translateY(-10px);
+		}
