@@ -512,8 +512,37 @@
 
 
 	</div>
-
+<script src="js/bmodjs/bmob-min.js"></script>
 <script type="text/javascript">
+	Bmob.initialize("3b6c0f0d393ae1b80972d61abf20b8ff", "f9d253c4a5955e336352fc79a0d5c125");
+    var GameScore = Bmob.Object.extend("GameScore");
+    var gameScore = new GameScore();
+
+
+    var query = new Bmob.Query(GameScore);
+    // gameScore.set("name", "念念1");
+    // gameScore.save(null, {
+    //     success: function(object) {
+    //         // alert("create object success, object id:"+object.id);
+    //     },
+    //     error: function(model, error) {
+    //         // alert("create object fail");
+    //     }
+    // });
+    
+    
+
+    // query.equalTo("name", "念念")
+    query.find({
+        success: function(results) {
+            results.forEach(function(item) {
+                console.log(item.attributes.name)
+            });
+        },
+        error: function(results) {
+            console.log(results)
+        }
+    });
 	$(function(){
 		var cardBox = $(".card-box ul");
 
