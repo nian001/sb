@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <style>
             * {margin: 0; padding: 0;}
@@ -43,7 +44,7 @@
                 <h1>这是一句废话<small> 请无视它的存在</small></h1>
             </div>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 hidden-xs">
                     <ul class="nav nav-pills nav-stacked">
                         <li role="presentation" class="active">
                             <a href="#">
@@ -69,7 +70,7 @@
                                         <img class="img-url" src="images/577b6c126884c98714.jpg" alt="...">
                                     </a>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-9 hidden-xs">
                                     <div class="music-info">
                                         <h3>
                                             <span class="music-name">歌曲名</span>
@@ -155,8 +156,13 @@
                         audioData = audio;
                     },
                     play: function(src) {
-                        if (!audioData.currentTime) {
+                        if (audioData.src === src) {
+                            if (!audioData.currentTime) {
+                                audioData.src = src;
+                            }
+                        } else {
                             audioData.src = src;
+                            audioData.currentTime = 0;
                         }
                         audioData.play();
                     },
@@ -253,16 +259,16 @@
                     {
                         eventName: "timeupdate",
                         eventCallBack: function(e) {
-                            var h = Math.floor(e.timeStamp / (1000 * 60 * 60));
-                            var m = Math.floor(e.timeStamp % (1000 * 60 * 60) / (1000 * 60));
-                            var s = Math.floor(e.timeStamp % (1000 * 60 * 60) % (1000 * 60) / 1000);
+                            var h = Math.floor(e.target.currentTime / (60 * 60));
+                            var m = Math.floor(e.target.currentTime % (60 * 60) / 60);
+                            var s = Math.floor(e.target.currentTime % (60 * 60) % 60);
                             h = h < 10 ? "0" + h : h;
                             m = m < 10 ? "0" + m : m;
                             s = s < 10 ? "0" + s : s;
                             $("#music-info .current-time").html(h + ":" + m + ":" + s);
 
                             if (!e.target.duration) return;
-                            var pre = parseInt(e.timeStamp / (e.target.duration * 1000) * 100) + "%";
+                            var pre = parseInt(e.target.currentTime / e.target.duration * 100) + "%";
                             $("#music-info .progress-bar-success").width(pre).html(pre);
                             var h = Math.floor(e.target.duration / (60 * 60));
                             var m = Math.floor(e.target.duration % (60 * 60) / 60);
@@ -285,19 +291,22 @@
                     var musicSrc = musicData.dom.attr("music-src");
                     musicData.src = musicSrc;
                     audio.play(musicSrc);
+                    $("#music-list li").removeClass("active");
                     $(musicData.dom).addClass("active");
-                    $("#music-list .audioPause").show();
-                    $("#music-list .audioPlay").hide();
+                    $("#music-list li .audioPause").hide();
+                    $("#music-list li .audioPlay").show();
+                    $(this).parents("li").find(".audioPause").show();
+                    $(this).parents("li").find(".audioPlay").hide();
                     $("#music-info .audioPlay").hide();
                     $("#music-info .audioPause").show();
                     $("#music-info .music-name").html(musicData.dom.attr("music-name"));
                     $("#music-info .singer-name").html(musicData.dom.attr("singer-name"));
-                    $("#music-info .img-url").attr("src", musicData.dom.attr("img-url"));
+                    $("#music-info .img-url").attr("src", musicData.dom.attr("img-url") || "images/577b6c126884c98714.jpg");
                 });
                 $("#music-list").on("click", ".audioPause", function() {
                     audio.pause();
-                    $("#music-list .audioPause").hide();
-                    $("#music-list .audioPlay").show();
+                    $(this).parents("li").find(".audioPause").hide();
+                    $(this).parents("li").find(".audioPlay").show();
                     $("#music-info .audioPlay").show();
                     $("#music-info .audioPause").hide();
                 });
