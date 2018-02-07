@@ -1,206 +1,221 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <style>
-            * {margin: 0; padding: 0;}
-            html, body {
-                height: 100%;
-                overflow: hidden;
-            }
-            body {
-                /*border: 1px solid red;*/
-                background: rgba(0, 0, 0, 1);
-            }
-            .login-box {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 50%;
-                margin: 0 auto;
-                margin-top: -142px;
-                /*border: 1px solid red;*/
-                width: 220px;
-            }
-            .login-box input[type="text"] {
-                margin-top: 40px;
-                padding: 0 10px;
-                width: 200px;
-                height: 30px;
-                background: transparent;
-                border: none;
-                outline: none;
-                border-bottom: 1px solid #ccc;
-                color: #fff;
-                font-size: 20px;
-                text-align: center;
-            }
-            .login-box label {
-                display: inline-block;
-                margin-top: 20px;
-                height: 18px;
-                line-height: 18px;
-                color: green;
-                cursor: pointer;
-            }
-            .login-box input[type="checkbox"] {
-                position: relative;
-                top: 4px;
-                margin-right: 4px;
-                display: inline-block;
-                width: 18px;
-                height: 18px;
-            }
-            .btns {
-                margin-top: 20px;
-                text-align: center;
-            }
-            .btns input[type="button"] {
-                padding: 4px 24px;
-                font-size: 18px;
-                color: #fff;
-                background: #ccc;
-                border: none;
-                outline: none;
-                border-radius: 4px;
-                cursor: pointer;
-                opacity: .5;
-                transition: opacity .3s;
-                word-spacing: 10px;
-            }
-            .btns input[type="button"]:hover {
-                opacity: 1;
-            }
 
-            .register-box {
-                display: none;
-                position: absolute;
-                top: 50%;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                margin-top: -170px;
-                width: 200px;
-            }
-            .register-box input[type="text"]{
-                margin-top: 40px;
-                padding: 0 10px;
-                width: 200px;
-                height: 30px;
-                background: transparent;
-                border: none;
-                outline: none;
-                border-bottom: 1px solid #ccc;
-                color: #fff;
-                font-size: 20px;
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="large-header" class="large-header">
-            <canvas id="demo-canvas"></canvas>
-            <div class="login-box" id="loginBox">
-                <input type="text" placeholder="请输入用户名" class="username">
-                <input type="text" placeholder="请输入密码" class="password">
-                <label for="rememberPassword">
-                    <input type="checkbox" name="rememberPassword" id="rememberPassword">记住密码
-                </label>
-                <div class="btns">
-                    <input type="button" value="登 陆" onclick="loginFn()">
-                    <input type="button" value="注 册" onclick="registerFn(this)">
-                </div>
-            </div>
+<head>
+    <meta charset="utf-8">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-            <div class="register-box" id="registerBox">
-                <input type="text" placeholder="请输入用户名" class="username">
-                <input type="text" placeholder="请输入密码" class="password">
-                <input type="text" placeholder="请输入电话号码" class="phone">
-                <!-- <input type="text" placeholder="请输入邮箱" class="email"> -->
-                <div class="btns">
-                    <input type="button" value="提交注册" onclick="saveUser()">
-                </div>
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body {
+        /*border: 1px solid red;*/
+        background: rgba(0, 0, 0, 1);
+    }
+
+    .login-box {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin: 0 auto;
+        margin-top: -142px;
+        /*border: 1px solid red;*/
+        width: 220px;
+    }
+
+    .login-box input[type="text"] {
+        margin-top: 40px;
+        padding: 0 10px;
+        width: 200px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #ccc;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .login-box label {
+        display: inline-block;
+        margin-top: 20px;
+        height: 18px;
+        line-height: 18px;
+        color: green;
+        cursor: pointer;
+    }
+
+    .login-box input[type="checkbox"] {
+        position: relative;
+        top: 4px;
+        margin-right: 4px;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+    }
+
+    .btns {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btns input[type="button"] {
+        padding: 4px 24px;
+        font-size: 18px;
+        color: #fff;
+        background: #ccc;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        cursor: pointer;
+        opacity: .5;
+        transition: opacity .3s;
+        word-spacing: 10px;
+    }
+
+    .btns input[type="button"]:hover {
+        opacity: 1;
+    }
+
+    .register-box {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        margin-top: -170px;
+        width: 200px;
+    }
+
+    .register-box input[type="text"] {
+        margin-top: 40px;
+        padding: 0 10px;
+        width: 200px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #ccc;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="large-header" class="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="login-box" id="loginBox">
+            <input type="text" placeholder="请输入用户名" class="username">
+            <input type="text" placeholder="请输入密码" class="password">
+            <label for="rememberPassword">
+                <input type="checkbox" name="rememberPassword" id="rememberPassword">记住密码
+            </label>
+            <div class="btns">
+                <input type="button" value="登 陆" onclick="loginFn()">
+                <input type="button" value="注 册" onclick="registerFn(this)">
             </div>
         </div>
+        <div class="register-box" id="registerBox">
+            <input type="text" placeholder="请输入用户名" class="username">
+            <input type="text" placeholder="请输入密码" class="password">
+            <input type="text" placeholder="请输入电话号码" class="phone">
+            <!-- <input type="text" placeholder="请输入邮箱" class="email"> -->
+            <div class="btns">
+                <input type="button" value="提交注册" onclick="saveUser()">
+            </div>
+        </div>
+    </div>
+    <script src="js/loginAnimate/js/TweenLite.min.js"></script>
+    <script src="js/loginAnimate/js/EasePack.min.js"></script>
+    <script src="js/loginAnimate/js/rAF.js"></script>
+    <script src="js/loginAnimate/js/demo-1.js"></script>
+    <script src="js/bmodjs/bmob-min.js"></script>
+    <script>
+    var loginBoxDom = document.querySelector("#loginBox");
+    var registerBoxDom = document.querySelector("#registerBox");
 
-        <script src="js/loginAnimate/js/TweenLite.min.js"></script>
-        <script src="js/loginAnimate/js/EasePack.min.js"></script>
-        <script src="js/loginAnimate/js/rAF.js"></script>
-        <script src="js/loginAnimate/js/demo-1.js"></script>
-        <script src="js/bmodjs/bmob-min.js"></script>
-        <script>
-            var loginBoxDom = document.querySelector("#loginBox");
-            var registerBoxDom = document.querySelector("#registerBox");
-            function registerFn(data) {
-                if (data) {
-                    loginBoxDom.style.display = "none";
-                    registerBoxDom.style.display = "block";
-                } else {
-                    loginBoxDom.style.display = "block";
-                    registerBoxDom.style.display = "none";
+    function registerFn(data) {
+        if (data) {
+            loginBoxDom.style.display = "none";
+            registerBoxDom.style.display = "block";
+        } else {
+            loginBoxDom.style.display = "block";
+            registerBoxDom.style.display = "none";
+        }
+    };
+
+    Bmob.initialize("3b6c0f0d393ae1b80972d61abf20b8ff", "f9d253c4a5955e336352fc79a0d5c125");
+    var User = Bmob.Object.extend("_User");
+    var query = new Bmob.Query(User);
+
+    function saveUser() {
+        var userNameValue = document.querySelector("#registerBox > .username").value;
+        var passwordValue = document.querySelector("#registerBox > .password").value;
+        var phoneValue = document.querySelector("#registerBox > .phone").value;
+        // var emailValue = document.querySelector("#registerBox > .email").value;
+        console.log(userNameValue, passwordValue, phoneValue)
+        if (!userNameValue || !passwordValue || !phoneValue) {
+            console.log("信息不全！");
+            return;
+        }
+        var user = new User();
+        user.set("username", userNameValue);
+        user.set("password", passwordValue);
+        user.set("phone", phoneValue);
+        // user.set("email", emailValue);
+
+        user.save(null, {
+            success: function(results) {
+                console.log(results, "save");
+                if (results) {
+                    registerFn();
                 }
-            };
-
-            Bmob.initialize("3b6c0f0d393ae1b80972d61abf20b8ff", "f9d253c4a5955e336352fc79a0d5c125");
-            var User = Bmob.Object.extend("_User");
-            var query = new Bmob.Query(User);
-
-            function saveUser() {
-                var userNameValue = document.querySelector("#registerBox > .username").value;
-                var passwordValue = document.querySelector("#registerBox > .password").value;
-                var phoneValue = document.querySelector("#registerBox > .phone").value;
-                // var emailValue = document.querySelector("#registerBox > .email").value;
-                console.log(userNameValue, passwordValue, phoneValue)
-                if (!userNameValue || !passwordValue || !phoneValue) {
-                    console.log("信息不全！");
-                    return;   
-                }
-                var user = new User();
-                user.set("username", userNameValue);
-                user.set("password", passwordValue);
-                user.set("phone", phoneValue);
-                // user.set("email", emailValue);
-
-                user.save(null, {
-                    success: function(results) {
-                        console.log(results, "save");
-                        if (results) {
-                            registerFn();
-                        }
-                    },
-                    error: function(error) {
-                        console.log(error)
-                    }
-                });
-            };
-
-            function loginFn() {
-                var userNameDom = document.querySelector("#loginBox > .username");
-                var passwordDom = document.querySelector("#loginBox > .password");
-                var userNameStr = userNameDom.value;
-                var passwordStr = passwordDom.value;
-                if (userNameStr && passwordStr) {
-                    query.equalTo("username", userNameStr);
-                    query.equalTo("password", passwordStr);
-                    query.find({
-                        success: function(results) {
-                            // console.log(results, 111);
-                            if (results.length > 0) {
-                                // console.log("登陆成功！");
-                                window.location.href = "index.html";
-                            } else {
-                                console.log("登陆失败，用户名或者账号不存在！");
-                            }
-                        },
-                        error: function(error) {
-                            console.log(error);
-                        }
-                    });
-                } else {
-                    console.log("请输入用户名或者密码！");
-                }
+            },
+            error: function(error) {
+                console.log(error)
             }
+        });
+    };
 
-        </script>
-    </body>
+    function loginFn() {
+        var userNameDom = document.querySelector("#loginBox > .username");
+        var passwordDom = document.querySelector("#loginBox > .password");
+        var userNameStr = userNameDom.value;
+        var passwordStr = passwordDom.value;
+        if (userNameStr && passwordStr) {
+            query.equalTo("username", userNameStr);
+            query.equalTo("password", passwordStr);
+            query.find({
+                success: function(results) {
+                    // console.log(results, 111);
+                    if (results.length > 0) {
+                        // console.log("登陆成功！");
+                        window.location.href = "index.html";
+                    } else {
+                        console.log("登陆失败，用户名或者账号不存在！");
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        } else {
+            console.log("请输入用户名或者密码！");
+        }
+    }
+    </script>
+</body>
+
 </html>
