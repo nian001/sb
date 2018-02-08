@@ -110,6 +110,24 @@
         font-size: 20px;
         text-align: center;
     }
+    #loginBox .remember-list {
+        /*display: none;*/
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        transition: all .5s;
+    }
+    #loginBox .remember-list .remember-list-item {
+        height: 40px;
+        line-height: 40px;
+        width: 200px;
+        padding: 0 10px;
+        background: rgba(255, 255, 255, .5);
+    }
+    #loginBox .remember-list .remember-list-item:hover {
+        background: green;
+        cursor: pointer;
+    }
     </style>
 </head>
 
@@ -126,6 +144,9 @@
                 <input type="button" value="登 陆" onclick="loginFn()">
                 <input type="button" value="注 册" onclick="registerFn(this)">
             </div>
+            <ul class="remember-list">
+                <!-- <li class="remember-list-item">1</li> -->
+            </ul>
         </div>
         <div class="register-box" id="registerBox">
             <input type="text" placeholder="请输入用户名" class="username">
@@ -143,6 +164,39 @@
     <script src="js/loginAnimate/js/demo-1.js"></script>
     <script src="js/bmodjs/bmob-min.js"></script>
     <script>
+    var checkboxDom = document.querySelector("#rememberPassword");
+    var checkboxChecked = false;
+    checkboxDom.onchange = function() {
+        checkboxChecked = this.checked;
+    }
+
+    document.querySelector("#loginBox > .username").onkeyup = function(e) {
+        console.log(e)
+        var _userInfoList = getLocalStorage("userInfoList");
+        var _this = this;
+        var _hasList = _this.value && _userInfoList.filter(function(item) {
+            return item.userNameStr.indexOf(_this.value) !== -1;
+        });
+        var rememberListDom = document.querySelector("#loginBox > .remember-list");
+        if (_hasList.length > 0) {
+            var itemHtml = "";
+            _hasList.forEach(function(item) {
+                itemHtml += '<li class="remember-list-item" data-name="'+item.userNameStr+'" data-password="'+item.passwordStr+'" onclick="setDefaultInput(this)">'+ item.userNameStr +'</li>'
+            });
+            rememberListDom.style.top = "72px";
+            rememberListDom.style.display = "block";
+            rememberListDom.style.height = "auto";
+            rememberListDom.innerHTML = itemHtml;
+        } else {
+            rememberListDom.innerHTML = "";
+        }
+    }
+    function setDefaultInput(obj) {
+        document.querySelector("#loginBox > .username").value = obj.getAttribute("data-name");
+        document.querySelector("#loginBox > .password").value = obj.getAttribute("data-password");
+        obj.parentElement.style.display = "none";
+    }
+
     var loginBoxDom = document.querySelector("#loginBox");
     var registerBoxDom = document.querySelector("#registerBox");
 
@@ -201,6 +255,7 @@
                 success: function(results) {
                     // console.log(results, 111);
                     if (results.length > 0) {
+                        checkboxChecked && setLocalStorage("userInfoList", {"userNameStr": userNameStr, "passwordStr": passwordStr})
                         // console.log("登陆成功！");
                         window.location.href = "index.html";
                     } else {
@@ -214,6 +269,25 @@
         } else {
             console.log("请输入用户名或者密码！");
         }
+    }
+    function setLocalStorage(key, data) {
+        var localStorageData = getLocalStorage(key);
+        console.log(localStorageData)
+        if (localStorageData) {
+            var flag = localStorageData.find(function(item) {
+                return data.userNameStr === item.userNameStr;
+            });
+            if (!flag) {
+                localStorageData.push(data);
+                localStorage.setItem(key, JSON.stringify(localStorageData));
+            }
+        } else {
+            console.log(key, data)
+            localStorage.setItem(key, JSON.stringify([data]));
+        }
+    }
+    function getLocalStorage(key) {
+        return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : null;
     }
     </script>
 </body>
