@@ -91,6 +91,15 @@
     .input-group {
         margin-bottom: 10px;
     }
+    .search {
+        margin-bottom: 20px;
+    }
+    .search a {
+        text-decoration: none;
+    }
+    .search .glyphicon-search {
+        margin-right: 10px;
+    }
     </style>
 </head>
 
@@ -104,6 +113,14 @@
     <div class="container index-box">
         <div class="page-header">
             <h1>念_资源整合记录 <small>资源来自于网络,如有侵权,请联系QQ1043000279!</small></h1>
+        </div>
+        <div class="search">
+            <div class="input-group">
+                <input type="text" class="form-control" id="inputGroupSuccess" aria-describedby="inputGroupSuccessStatus">
+                <a href="javaScript: void(0);" class="input-group-addon" id="search-btn">
+                    <i class="glyphicon glyphicon-search"></i>搜索
+                </a>
+            </div>
         </div>
         <div class="row page-body" id="notes-list"></div>
     </div>
@@ -151,10 +168,14 @@
             query.find({
                 success: function(results) {
                     if (results.length > 0) {
+                        var filterList = results.filter(function(item) {
+                            var data = item.attributes;
+                            return data.title.indexOf(params) !== -1 || !params;
+                        });
                         var _notesListHtml = "";
-                        results.forEach(function(element, index) {
+                        filterList.forEach(function(element, index) {
                             var data = element.attributes;
-                            _notesListHtml += '<div class="col-sm-6 col-md-4 animated bounce">' +
+                            _notesListHtml += '<div class="col-sm-6 col-md-4 animated rollIn">' +
                                 '<div class="thumbnail">' +
                                 '<a target="_back" href="' + (data.outLink || "#") + '">' +
                                 '<img src="' + (data.imgSrc || "images/5844ec53628ea83630.jpg") + '" alt="...">' +
@@ -177,6 +198,18 @@
             });
         }
         searchNotes();
+
+        $("#inputGroupSuccess").on("keypress", function(e) {
+            var ev = e || window.event;
+            var _val = $(this).val();
+            if (ev.key === "Enter") {
+                searchNotes(_val);
+            }
+        });
+        $("#search-btn").on("click", function() {
+            var _val = $(this).siblings("input").val();
+            searchNotes(_val);
+        });
 
         $("#sava-notes").click(function() {
             var _title = $("#myModal .title").val();
