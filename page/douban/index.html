@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>豆瓣api</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .body {
+            position: relative;
+            background: green;
+            height: 100%;
+        }
+
+        #list .col-xs-12 {
+            background: rgba(255, 255, 255, .75);;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            box-shadow: inset 0 0 10px 2px #000;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        #list .active {
+            background: rgba(0, 0, 0, .5);
+            box-shadow: inset 0 0 100px #fff;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search {
+            margin-bottom: 20px;
+        }
+        i.glyphicon-search {
+            margin-right: 10px;
+        }
+        .input-group-addon {
+            cursor: pointer;
+        }
+        .input-group-addon:hover {
+            border-color: pink;
+            background: pink;
+            color: #fff;
+        }
+        /*.media-heading {
+            color: green;
+        }*/
+        .tag-list {
+            position: absolute;
+            /*top: 100px;*/
+            left: -210px;
+            width: 210px;
+            /*background: #ccc;*/
+        }
+        .tag-list .form-control {
+            width: 200px;
+            margin: 2px;
+        }
+        .tag-list button {
+            float: left;
+            margin: 2px;
+            /*cursor: pointer;*/
+            width: 200px;
+            /*height: 30px;*/
+            /*line-height: 30px;*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container body">
+        <div class="tag-list">
+            <input type="text" class="form-control" id="tag-input" placeholder="标签搜索。。。">
+            <div id="tag-list"></div>
+        </div>
+        <div class="page-header">
+            <h1>豆瓣读书apiDemo <small></small></h1>
+        </div>
+        <div class="search" id="search">
+            <div class="input-group">
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入搜索内容。。。">
+                <div class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>搜索
+                </div>
+            </div>
+        </div>
+        <div id="list" class="row container"></div>
+    </div>
+    <script type="text/javascript" src="../../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var _page = 0;
+        var _count = 10;
+        var _height = 0;
+        var _flag = false;
+        var _query = null;
+        var _tag = "";
+        function getBooks(page, count, query, tag) {
+            var _url = "https://api.douban.com/v2/book/search?q="+ query +"&start=" + page + "&count="+ count + "&tag=" + tag;
+            $.ajax(_url, {
+                type: "get",
+                dataType: 'jsonp',
+                crossDomain: true,
+                success: function(data) {
+                    var html = "";
+                    data.books.forEach(function(item, index) {
+                        html += '<div class="col-xs-12 animated" data-alt="' + item.alt + '">' +
+                            '<div class="media">' +
+                            '<div class="media-left">' +
+                            '<a href="#">' +
+                            '<img class="media-object img-thumbnail" width="140" height="140" src="' + item.image + '" alt="...">' +
+                            '</a>' +
+                            '</div>' +
+                            '<div class="media-body">' +
+                            '<h4 class="media-heading">' + (page + index + 1) + '.' + item.title + '</h4>' +
+                            '<p>' + item.summary + '</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                    });
+                    var oldHtml = page == 0 ? "" : $("#list").html();
+                    $("#list").html(oldHtml += html);
+                    _height = $(document).height() - $(window).height();
+                    _flag = true;
+                }
+            });
+        }
+        getBooks(_page * _count, _count, _query, _tag);
+        $(window).scroll(function(e) {
+            if (($(document).scrollTop() >= _height - 5 || $(document).scrollTop() >= $(".body").height() - $(window).height()) && _flag) {
+                _flag = false;
+                _page ++;
+                getBooks(_page * _count, _count, _query, _tag);
+            }
+        });
+        $("#search .input-group-addon").click(function() {
+            _query = $(this).siblings(".form-control").val();
+            _page = 0;
+            getBooks(_page * _count, _count, _query, _tag);
+        });
+        $("#list").on("mouseover", ".col-xs-12", function(e) {
+            $(this).addClass("active").siblings().removeClass("active");
+            $(this).addClass("rubberBand").siblings().removeClass("rubberBand");
+        });
+        $("#list").on("click", ".col-xs-12", function(e) {
+            window.open($(this).data("alt"));
+        });
+        $("#tag-input").keyup(function() {
+            var inputTag = $(this).val();
+            initTags(inputTag);
+        });
+        function initTags(filterText) {
+            var tags = [
+                "小说(4951875)",
+                "外国文学(1772565)",
+                "文学(1405709)",
+                "随笔(1059590)",
+                "中国文学(947078)",
+                "经典(832643)",
+                "日本文学(747708)",
+                "散文(644433)",
+                "村上春树(416141)",
+                "诗歌(301579)",
+                "童话(278057)",
+                "儿童文学(215978)",
+                "古典文学(213157)",
+                "王小波(210595)",
+                "杂文(206907)",
+                "名著(201268)",
+                "余华(188790)",
+                "张爱玲(183557)",
+                "当代文学(130418)",
+                "钱钟书(99099)",
+                "外国名著(87102)",
+                "鲁迅(83657)",
+                "诗词(72792)",
+                "茨威格(59356)",
+                "米兰·昆德拉(51189)",
+                "杜拉斯(43155)",
+                "港台(6989)",
+                "漫画(1221217)",
+                "推理(872022)",
+                "绘本(852564)",
+                "青春(626232)",
+                "东野圭吾(514199)",
+                "科幻(487454)",
+                "言情(476780)",
+                "悬疑(444704)",
+                "奇幻(304125)",
+                "武侠(300912)",
+                "日本漫画(273686)",
+                "韩寒(261790)",
+                "耽美(242308)",
+                "亦舒(233419)",
+                "推理小说(231431)",
+                "三毛(199668)",
+                "网络小说(198604)",
+                "安妮宝贝(172572)",
+                "郭敬明(152621)",
+                "穿越(149284)",
+                "金庸(145385)",
+                "阿加莎·克里斯蒂(144207)",
+                "轻小说(139212)",
+                "科幻小说(125591)",
+                "几米(114408)",
+                "青春文学(113279)",
+                "魔幻(110794)",
+                "幾米(97806)",
+                "张小娴(97560)",
+                "J.K.罗琳(83257)",
+                "古龙(73328)",
+                "高木直子(71862)",
+                "沧月(65268)",
+                "落落(58462)",
+                "校园(58203)",
+                "张悦然(57610)",
+                "历史(1892092)",
+                "心理学(1234537)",
+                "哲学(1028496)",
+                "传记(724410)",
+                "文化(663165)",
+                "社会学(614300)",
+                "艺术(453282)",
+                "设计(380500)",
+                "社会(352591)",
+                "政治(331893)",
+                "建筑(257525)",
+                "宗教(235246)",
+                "电影(227991)",
+                "数学(205097)",
+                "政治学(201507)",
+                "回忆录(159910)",
+                "中国历史(156336)",
+                "思想(144431)",
+                "国学(134626)",
+                "人文(114890)",
+                "音乐(113572)",
+                "人物传记(111385)",
+                "绘画(103863)",
+                "艺术史(102920)",
+                "戏剧(99273)",
+                "佛教(66737)",
+                "军事(66163)",
+                "二战(65357)",
+                "西方哲学(64528)",
+                "近代史(59362)",
+                "考古(46896)",
+                "自由主义(41990)",
+                "美术(34704)",
+                "爱情(810630)",
+                "旅行(547227)",
+                "生活(480092)",
+                "成长(459800)",
+                "励志(370297)",
+                "心理(351959)",
+                "摄影(279066)",
+                "女性(274209)",
+                "职场(195702)",
+                "教育(188520)",
+                "美食(182862)",
+                "游记(145123)",
+                "灵修(119092)",
+                "健康(75138)",
+                "情感(74505)",
+                "手工(39663)",
+                "两性(38826)",
+                "养生(34531)",
+                "人际关系(33465)",
+                "家居(21431)",
+                "自助游(2645)",
+                "经济学(391102)",
+                "管理(383584)",
+                "经济(313622)",
+                "商业(274036)",
+                "金融(255046)",
+                "投资(206036)",
+                "营销(142760)",
+                "创业(103923)",
+                "理财(101087)",
+                "广告(62254)",
+                "股票(59122)",
+                "企业史(19163)",
+                "策划(7997)",
+                "科普(523356)",
+                "互联网(222378)",
+                "编程(147187)",
+                "科学(119665)",
+                "交互设计(65448)",
+                "用户体验(52280)",
+                "算法(48356)",
+                "科技(23118)",
+                "web(21416)",
+                "UE(4965)",
+                "通信(4630)",
+                "交互(4626)",
+                "UCD(3534)",
+                "神经网络(2244)",
+                "程序(1246)",
+            ];
+            var filterTags = [];
+            if (filterText) {
+                filterTags = tags.filter(function(text) {
+                    return text.indexOf(filterText) != -1;
+                });
+            } else {
+                filterTags = tags;
+            }
+            var tagHtml = "";
+            filterTags.forEach( function(element, index) {
+                tagHtml += '<button type="button" class="btn btn-default">'+ element.split("(")[0] +'</button>'
+            });
+            $("#tag-list").html(tagHtml);
+            $("#tag-list").on("click", ".btn", function() {
+                $(this).removeClass("btn-default").addClass("btn-success").siblings().addClass("btn-default").removeClass("btn-success");
+                _page = 0;
+                _tag = $(this).html().split("(")[0];
+                getBooks(_page * _count, _count, _query, _tag);
+            });
+        }
+        initTags();
+    });
+    </script>
+</body>
+
+</html>
+
