@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
     <style>
     * {
         margin: 0;
@@ -12,337 +12,242 @@
     }
 
     body {
-        font-size: 12px;
-        color: #666;
-        font-family: "微软雅黑";
-        background: url(images/timg.jpg) no-repeat;
-        background-size: 100%;
-        -moz-background-size: 100%;
+        background: url(images/16q58PICPJt_1024.jpg);
     }
 
-    .nav .glyphicon {
-        margin-right: 10px;
-        position: relative;
-        top: 2px;
+    .index-box {
+        /*height: 10000px;*/
+        background: rgba(255, 255, 255, .3);
     }
 
-    .singer-name {
-        color: #000;
+    .page-body .thumbnail {
+        overflow: hidden;
     }
 
-    .music-box .panel-primary>.panel-body {
-        padding-bottom: 0;
+    .page-body .thumbnail:hover {
+        color: red;
+        /*transform: scale(1.01);*/
+        box-shadow: 0px 0px 10px #000;
     }
-
-    #music-info .img-url {
+    .page-body .thumbnail:hover img {
+        transform: scale(1.05);
+    }
+    .page-body .thumbnail a {
+        display: block;
         width: 100%;
-        max-height: 200px;
+        height: 300px;
+        background: #A7A7A7;
+        overflow: hidden;
+    }
+    .page-body .thumbnail img {
+        width: 100%;
+        height: 300px;
         object-fit: contain;
+        background: transparent;
     }
 
-    #myModal .input-group {
+    .add-item,
+    #go-top {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        background: rgba(0, 0, 0, .7);
+        font-size: 28px;
+        color: #fff;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        transition: background, color .5s
+    }
+
+    .add-item:hover,
+    #go-top:hover {
+        color: #000;
+        background: rgba(255, 255, 255, .7);
+        text-shadow: 0px 0px 4px #000;
+    }
+
+    #go-top {
+        text-shadow: 0px 0px 4px #fff;
+    }
+
+    #side-menu {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .add-item {
+        margin-bottom: 10px;
+        font-size: 38px;
+    }
+
+    .add-item i {
+        position: relative;
+        left: 2px;
+        top: 4px;
+    }
+
+    .input-group {
         margin-bottom: 10px;
     }
-
-    #myModal .input-group:last-child {
-        margin-bottom: 0px;
+    .search {
+        margin-bottom: 20px;
     }
-
-    #music-list .default-music-list {
-        text-align: center;
-        color: #ccc;
+    .search a {
+        text-decoration: none;
+    }
+    .search .glyphicon-search {
+        margin-right: 10px;
     }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="page-header">
-            <h1>这是一句废话<small> 请无视它的存在</small></h1>
+    <div id="side-menu">
+        <div class="add-item" data-toggle="modal" data-target="#myModal">
+            <i class="glyphicon glyphicon-plus"></i>
         </div>
-        <div class="row">
-            <div class="col-md-2 hidden-xs hidden-sm">
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation" class="active">
-                        <a href="#">
-                                <i class="glyphicon glyphicon-music"></i>
-                                <span class="title">听听音乐</span>
-                            </a>
-                    </li>
-                    <li role="presentation"><a href="#">Profile</a></li>
-                    <li role="presentation"><a href="#">Messages</a></li>
-                </ul>
-            </div>
-            <div class="col-md-10 music-box">
-                <div class="panel panel-primary">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading clearfix">
-                        <span class="pull-left">我是一个播放器~~~~~</span>
-                        <button class="btn btn-success pull-right btn-xs" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i>添加歌曲</button>
-                    </div>
-                    <div class="panel-body" id="music-info">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a href="#" class="thumbnail">
-                                        <img class="img-url" src="images/577b6c126884c98714.jpg" alt="...">
-                                    </a>
-                            </div>
-                            <div class="col-md-9 hidden-xs hidden-sm">
-                                <div class="music-info">
-                                    <h3>
-                                            <span class="music-name">歌曲名</span>
-                                            <small class="singer-name">歌手</small>
-                                        </h3>
-                                    <p>
-                                        <span class="all-time">00:00:00</span> / <span class="current-time">00:00:00</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-info btn-xs">
-                                        <i class="glyphicon glyphicon-backward"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-sm audioPause" style="display: none;">
-                                        <i class="glyphicon glyphicon glyphicon-pause"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-sm audioPlay">
-                                        <i class="glyphicon glyphicon-play"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-info btn-xs">
-                                        <i class="glyphicon glyphicon-forward"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 0;"></div>
-                        </div>
-                    </div>
-                    <ul class="list-group" id="music-list">
-                        <li class="list-group-item default-music-list">暂无数据...</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="sizing-addon1">曲名：</span>
-                            <input type="text" class="form-control music-name" placeholder="曲名" aria-describedby="sizing-addon1">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="sizing-addon1">歌手：</span>
-                            <input type="text" class="form-control singer-name" placeholder="歌手" aria-describedby="sizing-addon1">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="sizing-addon1">封面：</span>
-                            <input type="text" class="form-control img-url" placeholder="图片链接" aria-describedby="sizing-addon1">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="sizing-addon1">来源：</span>
-                            <input type="text" class="form-control music-url" placeholder="歌曲链接" aria-describedby="sizing-addon1">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-success" id="saveAddMusic">保存</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+        <div id="go-top">Top</div>
     </div>
-    <!-- <audio src="http://sc1.111ttt.cn/2017/1/11/11/304112004168.mp3" controls></audio> -->
+    <div class="container index-box">
+        <div class="page-header">
+            <h1>念_资源整合记录 <small>资源来自于网络,如有侵权,请联系QQ1043000279!</small></h1>
+        </div>
+        <div class="search">
+            <div class="input-group">
+                <input type="text" class="form-control" id="inputGroupSuccess" aria-describedby="inputGroupSuccessStatus">
+                <a href="javaScript: void(0);" class="input-group-addon" id="search-btn">
+                    <i class="glyphicon glyphicon-search"></i>搜索
+                </a>
+            </div>
+        </div>
+        <div class="row page-body" id="notes-list"></div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">标题：</span>
+                        <input type="text" class="form-control title" placeholder="标题。。。" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon2">描述：</span>
+                        <textarea class="form-control describe" rows="3" placeholder="描述。。。" aria-describedby="basic-addon2"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon3">图片：</span>
+                        <textarea class="form-control img-src" rows="3" placeholder="图片地址。。。" aria-describedby="basic-addon3"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon3">地址：</span>
+                        <input class="form-control out-link" rows="3" placeholder="跳转地址。。。" aria-describedby="basic-addon3"></input>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="sava-notes">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/bmodjs/bmob-min.js"></script>
     <script>
-    var audio = (function(options) {
-        var audioData = {};
-        var audioObj = {
-            init: function(options) {
-                var audio = document.createElement("audio");
-                audio.src = "http://sc1.111ttt.cn/2017/1/11/11/304112004168.mp3";
-                // audio.controls = "controls";
-                document.body.appendChild(audio);
-                audioData = audio;
-            },
-            play: function(src) {
-                if (audioData.src === src) {
-                    if (!audioData.currentTime) {
-                        audioData.src = src;
-                    }
-                } else {
-                    audioData.src = src;
-                    audioData.currentTime = 0;
-                }
-                audioData.play();
-            },
-            pause: function() {
-                audioData.pause();
-            },
-            addEvents: function(eventsList) {
-                if (eventsList.length > 0) {
-                    eventsList.forEach(function(item) {
-                        audioData.addEventListener(item.eventName, function(e) {
-                            if (item.eventCallBack) item.eventCallBack(e, audioData);
-                        });
-                    });
-                }
-            }
-        };
-        return audioObj;
-    })();
-    audio.init();
-
-
-    Bmob.initialize("3b6c0f0d393ae1b80972d61abf20b8ff", "f9d253c4a5955e336352fc79a0d5c125");
-    var Music = Bmob.Object.extend("music");
-
-    function saveMusic(obj) {
-        var music = new Music();
-        music.set("musicName", obj.musicName);
-        music.set("singerName", obj.singerName);
-        music.set("imgUrl", obj.imgUrl);
-        music.set("musicUrl", obj.musicUrl);
-
-        music.save(null, {
-            success: function(results) {
-                console.log(results, "save");
-                if (results) {
-                    // registerFn();
-                }
-            },
-            error: function(error) {
-                console.log(error)
-            }
-        });
-    };
-
-    function searchMusicFn() {
-        var query = new Bmob.Query(Music);
-        query.find({
-            success: function(results) {
-                console.log(results, 111);
-                var musicListHtml = "";
-                if (results.length > 0) {
-                    results.forEach(function(item) {
-                        musicListHtml += '<li class="list-group-item clearfix" music-src="' + item.attributes.musicUrl + '" singer-name="' + item.attributes.singerName + '" img-url="' + item.attributes.imgUrl + '">' +
-                            '<div class="pull-left ">' +
-                            '<span class="btn btn-xs btn-name">' + item.attributes.musicName + '</span>' +
-                            '</div>' +
-                            '<div class="pull-right" role="group" aria-label="...">' +
-                            '<button type="button" class="btn btn-success btn-xs audioPlay">' +
-                            '<i class="glyphicon glyphicon-play"></i>' +
-                            '</button>' +
-                            '<button type="button" class="btn btn-default btn-xs audioPause" style="display: none;">' +
-                            '<i class="glyphicon glyphicon-pause"></i>' +
-                            '</button>' +
-                            '<button type="button" class="btn btn-danger btn-xs" style="margin-left: 10px;">' +
-                            '<i class="glyphicon glyphicon-remove"></i>' +
-                            '</button>' +
-                            '</div>' +
-                            '</li>'
-                    });
-                    $("#music-list").html(musicListHtml);
-                }
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    }
-    searchMusicFn();
-
     $(function() {
-        $("#saveAddMusic").click(function() {
-            var singerName = $("#myModal .singer-name").val();
-            var musicName = $("#myModal .music-name").val();
-            var musicUrl = $("#myModal .music-url").val();
-            var imgUrl = $("#myModal .img-url").val();
-            saveMusic({
-                singerName: singerName,
-                musicName: musicName,
-                musicUrl: musicUrl,
-                imgUrl: imgUrl,
+        Bmob.initialize("3b6c0f0d393ae1b80972d61abf20b8ff", "f9d253c4a5955e336352fc79a0d5c125");
+        var Notes = Bmob.Object.extend("notes");
+        var query = new Bmob.Query(Notes);
+        var searchNotes = function(params) {
+            query.find({
+                success: function(results) {
+                    if (results.length > 0) {
+                        var filterList = results.filter(function(item) {
+                            var data = item.attributes;
+                            return data.title.indexOf(params) !== -1 || !params;
+                        });
+                        var _notesListHtml = "";
+                        filterList.forEach(function(element, index) {
+                            var data = element.attributes;
+                            _notesListHtml += '<div class="col-sm-6 col-md-4 animated rollIn">' +
+                                '<div class="thumbnail">' +
+                                '<a target="_back" href="' + (data.outLink || "#") + '">' +
+                                '<img src="' + (data.imgSrc || "images/5844ec53628ea83630.jpg") + '" alt="...">' +
+                                '</a>' +
+                                '<div class="caption">' +
+                                '<h3>' + data.title + '</h3>' +
+                                '<p title="'+data.describe+'">' + data.describe.substring(0, 27) + '...</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        });
+                        $("#notes-list").html(_notesListHtml);
+                    } else {
+                        console.log("查询失败!");
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
             });
-            $("#myModal").modal('hide');
-        });
-        audio.addEvents([{
-            eventName: "timeupdate",
-            eventCallBack: function(e) {
-                var h = Math.floor(e.target.currentTime / (60 * 60));
-                var m = Math.floor(e.target.currentTime % (60 * 60) / 60);
-                var s = Math.floor(e.target.currentTime % (60 * 60) % 60);
-                h = h < 10 ? "0" + h : h;
-                m = m < 10 ? "0" + m : m;
-                s = s < 10 ? "0" + s : s;
-                $("#music-info .current-time").html(h + ":" + m + ":" + s);
+        }
+        searchNotes();
 
-                if (!e.target.duration) return;
-                var pre = parseInt(e.target.currentTime / e.target.duration * 100) + "%";
-                $("#music-info .progress-bar-success").width(pre).html(pre);
-                var h = Math.floor(e.target.duration / (60 * 60));
-                var m = Math.floor(e.target.duration % (60 * 60) / 60);
-                var s = Math.floor(e.target.duration % (60 * 60) % 60);
-                h = h < 10 ? "0" + h : h;
-                m = m < 10 ? "0" + m : m;
-                s = s < 10 ? "0" + s : s;
-                $("#music-info .all-time").html(h + ":" + m + ":" + s);
-            }
-        }, {
-            eventName: "play",
-            eventCallBack: function(e) {
-                if (!e) return;
-            }
-        }]);
-        var musicData = {};
-        $("#music-list").on("click", ".btn-name, .audioPlay", function() {
-            musicData.dom = $(this).parents("li");
-            var musicSrc = musicData.dom.attr("music-src");
-            musicData.src = musicSrc;
-            audio.play(musicSrc);
-            $("#music-list li").removeClass("active");
-            $(musicData.dom).addClass("active");
-            $("#music-list li .audioPause").hide();
-            $("#music-list li .audioPlay").show();
-            $(this).parents("li").find(".audioPause").show();
-            $(this).parents("li").find(".audioPlay").hide();
-            $("#music-info .audioPlay").hide();
-            $("#music-info .audioPause").show();
-            $("#music-info .music-name").html(musicData.dom.attr("music-name"));
-            $("#music-info .singer-name").html(musicData.dom.attr("singer-name"));
-            $("#music-info .img-url").attr("src", musicData.dom.attr("img-url") || "images/577b6c126884c98714.jpg");
-        });
-        $("#music-list").on("click", ".audioPause", function() {
-            audio.pause();
-            $(this).parents("li").find(".audioPause").hide();
-            $(this).parents("li").find(".audioPlay").show();
-            $("#music-info .audioPlay").show();
-            $("#music-info .audioPause").hide();
-        });
-        $("#music-info .audioPlay").click(function() {
-            if (musicData.src) {
-                audio.play(musicData.src);
-                $("#music-list .audioPause").show();
-                $("#music-list .audioPlay").hide();
-                $("#music-info .audioPlay").hide();
-                $("#music-info .audioPause").show();
+        $("#inputGroupSuccess").on("keypress", function(e) {
+            var ev = e || window.event;
+            var _val = $(this).val();
+            if (ev.key === "Enter") {
+                searchNotes(_val);
             }
         });
-        $("#music-info .audioPause").click(function() {
-            audio.pause();
-            $("#music-list .audioPause").hide();
-            $("#music-list .audioPlay").show();
-            $("#music-info .audioPlay").show();
-            $("#music-info .audioPause").hide();
+        $("#search-btn").on("click", function() {
+            var _val = $(this).siblings("input").val();
+            searchNotes(_val);
+        });
+
+        $("#sava-notes").click(function() {
+            var _title = $("#myModal .title").val();
+            var _describe = $("#myModal .describe").val();
+            var _imgSrc = $("#myModal .img-src").val();
+            var _outLink = $("#myModal .out-link").val();
+            if (!_title || !_describe) {
+                return;
+            }
+            var noteObj = new Notes();
+            noteObj.set("title", _title);
+            noteObj.set("describe", _describe);
+            noteObj.set("imgSrc", _imgSrc);
+            noteObj.set("outLink", _outLink);
+            noteObj.save(null, {
+                success: function(results) {
+                    if (results) {
+                        searchNotes();
+                        $("#myModal .title").val("");
+                        $("#myModal .describe").val("");
+                        $("#myModal .img-src").val("");
+                        $("#myModal .out-link").val("");
+                        $("#myModal").modal('hide');
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        });
+        $("#go-top").click(function() {
+            var bodyDom = $("body");
+
+            var timer = setInterval(function() {
+                var _y = bodyDom.scrollTop();
+                bodyDom.scrollTop(_y * 0.5);
+                if (_y <= 0) clearInterval(timer);
+            }, 30);
         });
     });
     </script>
