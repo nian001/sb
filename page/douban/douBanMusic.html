@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>豆瓣音乐api</title>
+</head>
+<body>
+    <div id="music-list"></div>
+    <audio controls id="audio"></audio>
+    <script type="text/javascript" src="../../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            function getMusicList() {
+                var url = "https://api.douban.com/v2/music/search?start=0&count=100&q=七里香";
+                $.ajax(url, {
+                    type: "get",
+                    dataType: 'jsonp',
+                    crossDomain: true,
+                    success: function(data) {
+                        console.log(data)
+                        data.musics.forEach( function(element, index) {
+                            $("#music-list").append($('<div class="music-item" data-alt="'+element.alt+'">'+element.title+'</div>'));
+                        });
+                        $("#music-list").on("click", ".music-item", function() {
+                            var src = $(this).data("alt");
+                            console.log(src)
+                            $("#audio").src = src;
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            }
+            getMusicList();
+        });
+    </script>
+</body>
+</html>
